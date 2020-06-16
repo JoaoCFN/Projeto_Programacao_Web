@@ -1,0 +1,12 @@
+.menu-inicial {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.menu-inicial h1{
+    font-family: 'Nunito';
+    color: #fff200;
+    font-weight: 900;
+    font-size: 50px;
+}
