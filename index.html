@@ -7,7 +7,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- FONTE NUNITO -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+	<!-- Font awesome CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="estilo.css">
 
@@ -16,8 +18,33 @@
 
     <main class="container">
         <section class="menu-inicial">
-            <h1>21 de Boca</h1>
-        </section>
+            <h1 class="mb-3">21 de Boca</h1>
+            <h4>Seja bem vindo!</h4>
+            <h4 class="mb-4">Escolha um das opções abaixo</h4>
+            <div class="row">
+				<div class="col-sm-6">
+					<a href="#">
+						<button class="btn">SINGLE PLAYER</button>
+					</a>
+				</div>
+				<div class="col-sm-6">
+					<a href="#">
+						<button class="btn">MULTI PLAYER</button>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<button class="info position-info">
+			<h5>Regras</h5>
+			<p>
+				Quem chegar em 21 primeiro vence. Os jogadores podem podem escolher entre três números subsequentes a partir do número anterior.
+			</p>
+			<span class="icon">
+				<i class="fa fa-info"></i>
+			</span>
+		</button>
+
     </main>
       
     <!-- Optional JavaScript -->

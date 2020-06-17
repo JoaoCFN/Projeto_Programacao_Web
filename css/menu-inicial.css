@@ -1,12 +1,39 @@
 .menu-inicial {
-    position: absolute;
+    /* position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    text-align: center;
 }
 .menu-inicial h1{
     font-family: 'Nunito';
     color: #fff200;
     font-weight: 900;
     font-size: 50px;
+    text-align: center;
+}
+.menu-inicial h4{
+    color: #ffffff;
+    font-weight: 700;
+    text-align: center;
+}
+.menu-inicial h5{
+    color: #ffffff;
+    font-weight: 700;
+    text-align: center;
+}
+.menu-inicial button{
+    background-color: #fff200;
+    color: #000;
+    font-weight: 900;
+    font-family: 'Nunito';
+    padding: 16px;
+    min-width: 160px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }

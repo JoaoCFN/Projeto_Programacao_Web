@@ -1,0 +1,50 @@
+.info {
+    background: #fff200;
+    color: #000;
+    padding: 1em;
+    border-radius: 10px;
+    width: 300px;
+    clip-path: circle(10% at 90% 80%);
+    text-align: center;
+    border: 0;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+    outline: none !important;
+}
+
+.info:hover{
+    clip-path: circle(100%);
+}
+
+.info:hover p, h1{
+    margin: 0;
+}
+
+.info:hover span{
+    opacity: 0;
+    display: none;
+}
+
+.icon{
+    float: right;
+    font-weight: bold;
+    margin-right: 4%;
+    margin-bottom: 6%;
+    transition: opacity 0.3s;
+}
+
+.position-info {
+    position: fixed;
+    bottom: 5%; 
+    right: 2%;
+    margin: auto;
+    z-index: 9999;
+}
+
+@media screen and (max-width: 600px){
+    
+    .position-info {
+        bottom: 3%; 
+        right: 3%;
+    }  
+}
