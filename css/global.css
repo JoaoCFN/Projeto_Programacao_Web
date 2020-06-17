@@ -4,10 +4,14 @@
     box-sizing: border-box;
 }
 body{
-    background: linear-gradient(45deg, #161515, #201f1f, #383333);
-    background-size: 300% 300%;
+    background: linear-gradient(45deg, #161515, #201f1f);
+    background-size: 200% 200%;
+    animation: backColors 5s ease infinite;
     /* background-color: #161515; */
-    animation: backColors 15s ease infinite;
+}
+
+button{
+    outline: none !important;
 }
 
 @keyframes backColors{
