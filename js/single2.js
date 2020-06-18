@@ -10,23 +10,15 @@
     totalScore = 0;
     placar.innerHTML = totalScore;
     status.innerHTML = "Sua vez";
-    btn_soma_1.innerHTML = totalScore + 1;
-    btn_soma_2.innerHTML = totalScore + 2;
-    btn_soma_3.innerHTML = totalScore + 3;
-
-    function attButtons(){
-        btn_soma_1.innerHTML = totalScore + 1;
-        btn_soma_2.innerHTML = totalScore + 2;
-        btn_soma_3.innerHTML = totalScore + 3;
-    }
+    attOptions();
 
     // JOGADOR
-    function addScorePlayer(scorePlayer){
+    function addScorePlayer(button){
         if(totalScore < 21){
-            totalScore += scorePlayer;
+            totalScore = Number(button.innerHTML);
             placar.innerHTML = totalScore;
             lastPlay = "Jogador";
-            attButtons();
+            attOptions();
             console.log(lastPlay);
         }
     }
@@ -38,7 +30,9 @@
         btn_soma_2.setAttribute("disabled", true);
         btn_soma_3.setAttribute("disabled", true);
 
+        // ALTERANDO STATUS
         totalScore < 21 ? status.innerHTML = "Vez do computador": ""
+
         // DELAY PARA O PC JOGAR
         setTimeout(() => {
             if(totalScore < 21){
@@ -49,73 +43,84 @@
                     SE O SCORE FOR MENOR QUE 21, QUANDO O COMPUTADOR TERMINAR A JOGADA, DEVOLVE A VEZ PARA O PLAYER
                 */
                 totalScore < 21 ? status.innerHTML = "Sua vez": ""
-                // REATIVA BOTÕES DO USUÁRIO
-                btn_soma_1.removeAttribute("disabled");
-                btn_soma_2.removeAttribute("disabled");
-                btn_soma_3.removeAttribute("disabled");
                 lastPlay = "Computador";
-                attButtons();
+                attOptions();
                 console.log(lastPlay);
             }
         }, 2000)
     }
 
-    // VERIFICAÇÃO
+    // VERIFICA A PONTUAÇÃO ATUAL
     function verifyScore(score){
         console.log("Verificou");
         if(score == 21){
             status.innerHTML = "Fim de jogo";
 
-            if(lastPlay == "Jogador"){
-                Swal.fire({
-                    icon: "success",
-                    title: "Fim de jogo",
-                    text: `Voce venceu!!`
-                })
-            }
-            else{
-                Swal.fire({
-                    icon: "error",
-                    title: "Fim de jogo",
-                    text: `Voce perdeu`
-                })
+            switch(lastPlay){
+                case "Jogador":
+                    Swal.fire({
+                        icon: "success",
+                        title: "Fim de jogo",
+                        text: `Voce venceu!!`
+                    })
+                break;
+
+                case "Computador":
+                    Swal.fire({
+                        icon: "error",
+                        title: "Fim de jogo",
+                        text: `Voce perdeu`
+                    })
+                break;
             }
 
             resetInfos();
         }
-        
+
         else if(score > 21){
-            if(lastPlay == "Jogador"){
-                Swal.fire({
-                    icon: "error",
-                    title: "Fim de jogo",
-                    text: `Voce perdeu`
-                })
-            }
-            else{
-                Swal.fire({
-                    icon: "success",
-                    title: "Fim de jogo",
-                    text: `Voce venceu!!`
-                })
+
+            switch(lastPlay){
+                case "Jogador":
+                    Swal.fire({
+                        icon: "error",
+                        title: "Fim de jogo",
+                        text: `Voce perdeu`
+                    })
+                break;
+
+                case "Computador":
+                    Swal.fire({
+                        icon: "success",
+                        title: "Fim de jogo",
+                        text: `Voce venceu!!`
+                    })
+                break;
             }
 
             resetInfos();
         }
     }
 
+    // RESETA CAMPOS QUANDO A PARTIDA É FINALIZADA
     function resetInfos(){
         setTimeout(() => {
             // SETANDO VALORES INICIAIS
             totalScore = 0;
             placar.innerHTML = totalScore;
             status.innerHTML = "Sua vez";
-            // REATIVA BOTÕES DO USUÁRIO
-            btn_soma_1.removeAttribute("disabled");
-            btn_soma_2.removeAttribute("disabled");
-            btn_soma_3.removeAttribute("disabled");
-            attButtons();
+            attOptions();
         }, 2000)
+    }
+
+    // ATUALIZA OS VALORES DOS BOTÕES
+    function attOptions(){
+        btn_soma_1.innerHTML = totalScore + 1;
+        btn_soma_2.innerHTML = totalScore + 2;
+        btn_soma_3.innerHTML = totalScore + 3;
+        // REATIVA BOTÕES DO USUÁRIO
+        btn_soma_1.removeAttribute("disabled");
+        btn_soma_2.removeAttribute("disabled");
+        btn_soma_3.removeAttribute("disabled");
     }
 
     // GERAR NÚMEROS INTEIROS ALTEATÓRIOS
@@ -126,7 +131,7 @@
     }
 
     btn_soma_1.addEventListener("click", () => {
-        addScorePlayer(1);
+        addScorePlayer(btn_soma_1);
         addScoreComputer();
         setTimeout(() => {
             verifyScore(totalScore);
@@ -134,7 +139,7 @@
     })
 
     btn_soma_2.addEventListener("click", () => {
-        addScorePlayer(2);
+        addScorePlayer(btn_soma_2);
         addScoreComputer();
         setTimeout(() => {
             verifyScore(totalScore);
@@ -142,7 +147,7 @@
     })
 
     btn_soma_3.addEventListener("click", () => {
-        addScorePlayer(3);
+        addScorePlayer(btn_soma_3);
         addScoreComputer();
         setTimeout(() => {
             verifyScore(totalScore);
