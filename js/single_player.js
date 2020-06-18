@@ -52,7 +52,7 @@
     // VERIFICAÇÃO
     function verifyScore(score){
         console.log("Verificou");
-        if(score >= 21){
+        if(score == 21){
             status.innerHTML = "Fim de jogo";
 
             if(lastPlay == "Jogador"){
@@ -69,14 +69,41 @@
                     text: `Voce perdeu`
                 })
             }
+
+            resetInfos();
             
-            setTimeout(() => {
-                // SETANDO VALORES INICIAIS
-                totalScore = 0;
-                placar.innerHTML = totalScore;
-                status.innerHTML = "Sua vez";
-            }, 2000)
         }
+        else if(score > 21){
+            if(lastPlay == "Jogador"){
+                Swal.fire({
+                    icon: "error",
+                    title: "Fim de jogo",
+                    text: `Voce perdeu`
+                })
+            }
+            else{
+                Swal.fire({
+                    icon: "success",
+                    title: "Fim de jogo",
+                    text: `Voce venceu!!`
+                })
+            }
+
+            resetInfos();
+        }
+    }
+
+    function resetInfos(){
+        setTimeout(() => {
+            // SETANDO VALORES INICIAIS
+            totalScore = 0;
+            placar.innerHTML = totalScore;
+            status.innerHTML = "Sua vez";
+            // REATIVA BOTÕES DO USUÁRIO
+            btn_soma_1.removeAttribute("disabled");
+            btn_soma_2.removeAttribute("disabled");
+            btn_soma_3.removeAttribute("disabled");
+        }, 2000)
     }
 
     // GERAR NÚMEROS INTEIROS ALTEATÓRIOS
