@@ -135,7 +135,7 @@
         addScoreComputer();
         setTimeout(() => {
             verifyScore(totalScore);
-        }, 3000)
+        }, 2500)
     })
 
     btn_soma_2.addEventListener("click", () => {
@@ -143,7 +143,7 @@
         addScoreComputer();
         setTimeout(() => {
             verifyScore(totalScore);
-        }, 3000)
+        }, 2500)
     })
 
     btn_soma_3.addEventListener("click", () => {
