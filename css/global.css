@@ -4,24 +4,9 @@
     box-sizing: border-box;
 }
 body{
-    background: linear-gradient(45deg, #161515, #201f1f);
-    background-size: 200% 200%;
-    animation: backColors 5s ease infinite;
-    /* background-color: #161515; */
+    background-color: #0f0f0f;
 }
 
 button{
     outline: none !important;
-}
-
-@keyframes backColors{
-    0% {
-        background-position: 0% 50%;
-    }
-    50%{
-        background-position: 100% 50%;
-    }
-    100%{
-        background-position: 0% 50%;
-    }
 }
