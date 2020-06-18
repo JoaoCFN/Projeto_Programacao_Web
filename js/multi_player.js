@@ -112,7 +112,7 @@
                 text: `${lastPlay} Voce venceu!`
             })
 
-            // resetInfos();
+            resetInfos();
             
         }
         else if(score > 21){
@@ -131,20 +131,20 @@
                 })
             }
 
-            // resetInfos();
+            resetInfos();
         }
     }
 
-    // // RESETA CAMPOS QUANDO A PARTIDA É FINALIZADA
-    // function resetInfos(){
-    //     setTimeout(() => {
-    //         // SETANDO VALORES INICIAIS
-    //         totalScore = 0;
-    //         placar.innerHTML = totalScore;
-    //         updateButtons();
-    //         updateStatus();
-    //     }, 2000)
-    // }
+    // RESETA CAMPOS QUANDO A PARTIDA É FINALIZADA
+    function resetInfos(){
+        setTimeout(() => {
+            // SETANDO VALORES INICIAIS
+            totalScore = 0;
+            placar.innerHTML = totalScore;
+            // updateStatus();
+            updateButtons();
+        }, 2000)
+    }
 
     // GERAR NÚMEROS INTEIROS ALTEATÓRIOS
     function getRandomInt(min, max) {
