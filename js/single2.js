@@ -19,7 +19,6 @@
             placar.innerHTML = totalScore;
             lastPlay = "Jogador";
             attOptions();
-            console.log(lastPlay);
         }
     }
 
@@ -45,17 +44,14 @@
                 totalScore < 21 ? status.innerHTML = "Sua vez": ""
                 lastPlay = "Computador";
                 attOptions();
-                console.log(lastPlay);
             }
         }, 2000)
     }
 
     // VERIFICA A PONTUAÇÃO ATUAL
     function verifyScore(score){
-        console.log("Verificou");
         if(score == 21){
             status.innerHTML = "Fim de jogo";
-
             switch(lastPlay){
                 case "Jogador":
                     Swal.fire({
@@ -78,7 +74,7 @@
         }
 
         else if(score > 21){
-
+            status.innerHTML = "Fim de jogo";
             switch(lastPlay){
                 case "Jogador":
                     Swal.fire({
