@@ -6,6 +6,9 @@
     flex-direction: column;
     text-align: center;
 }
+.multiplayer{
+    flex-direction: row;
+}
 .card_game{
     width: 22rem;
     max-width: 95%;
@@ -45,4 +48,10 @@
 }
 .card_gamel .btn_game:hover{
     color: #201f1f;
+}
+
+@media screen and (max-width: 800px){
+    .multiplayer{
+        flex-direction: column;
+    }
 }
