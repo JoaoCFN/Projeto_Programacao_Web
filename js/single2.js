@@ -5,6 +5,15 @@
     const placar = document.querySelector(".placar");
     const status = document.querySelector(".status");
     let lastPlay;
+    // RANKING 
+    const labelVitoriasJogador = document.querySelector(".vitorias_jogador");
+    const labelDerrotasJogador = document.querySelector(".derrotas_jogador");
+    const labelVitoriasComputador = document.querySelector(".vitorias_computador");
+    const labelDerrotasComputador = document.querySelector(".derrotas_computador");
+    let vitoriasJogador = 0;
+    let derrotasJogador = 0;
+    let vitoriasComputador = 0;
+    let derrotasComputador = 0;
 
     // SETANDO VALORES INICIAIS
     totalScore = 0;
@@ -59,6 +68,8 @@
                         title: "Fim de jogo",
                         text: `Voce venceu!!`
                     })
+                    vitoriasJogador += 1;
+                    derrotasComputador += 1;
                 break;
 
                 case "Computador":
@@ -67,6 +78,8 @@
                         title: "Fim de jogo",
                         text: `Voce perdeu`
                     })
+                    vitoriasComputador += 1;
+                    derrotasJogador += 1;
                 break;
             }
 
@@ -82,6 +95,8 @@
                         title: "Fim de jogo",
                         text: `Voce perdeu`
                     })
+                    vitoriasComputador += 1;
+                    derrotasJogador += 1;
                 break;
 
                 case "Computador":
@@ -90,6 +105,8 @@
                         title: "Fim de jogo",
                         text: `Voce venceu!!`
                     })
+                    vitoriasJogador += 1;
+                    derrotasComputador += 1;
                 break;
             }
 
@@ -117,6 +134,11 @@
         btn_soma_1.removeAttribute("disabled");
         btn_soma_2.removeAttribute("disabled");
         btn_soma_3.removeAttribute("disabled");
+        // SETANDO VALORES INICIAIS DO RANKING
+        labelVitoriasJogador.innerHTML = vitoriasJogador;
+        labelDerrotasJogador.innerHTML = derrotasJogador;
+        labelVitoriasComputador.innerHTML = vitoriasComputador;
+        labelDerrotasComputador.innerHTML = derrotasComputador;
     }
 
     // GERAR NÚMEROS INTEIROS ALTEATÓRIOS
@@ -126,6 +148,7 @@
         return Math.floor(Math.random() * (max - min)) + min;
     }
 
+    // EVENT LISTENERS DOS BOTÕES
     btn_soma_1.addEventListener("click", () => {
         addScorePlayer(btn_soma_1);
         addScoreComputer();

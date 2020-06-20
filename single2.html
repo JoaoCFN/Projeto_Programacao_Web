@@ -33,7 +33,58 @@
                 <h5 class="placar"></h5>
             </div>
         </section>
+        <button class="btn-ranking btn-position-ranking" data-toggle="modal" data-target="#ranking">
+          <i class="fa fa-trophy"></i>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="ranking" tabindex="-1" role="dialog" aria-labelledby="Ranking do jogo" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="TituloModalCentralizado">
+                        <i class="fa fa-trophy"></i>
+                        Ranking
+                      </h5>
+
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <table class="table table-striped table-dark">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Vitórias</th>
+                                <th scope="col">Derrotas</th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>Jogador</td>
+                                <td class="vitorias_jogador"></td>
+                                <td class="derrotas_jogador"></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>Computador</td>
+                                <td class="vitorias_computador"></td>
+                                <td class="derrotas_computador"></td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
+
+    
       
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -1,0 +1,53 @@
+.btn-ranking {
+    box-sizing: border-box;
+    margin: auto;
+    border-radius: 50%;
+    width: 75px; height: 75px;
+    color: rgb(0, 0, 0);
+    font: 30px Helvetica;
+    line-height: 65px;
+    text-align: center;
+    background: #fff200;
+    cursor: pointer;
+    user-select: none;
+    transition: all .4s ease-in-out;
+    transform: scale(1);
+    outline: none !important;
+    border: none;
+}
+ 
+.btn-position-ranking {
+    position: fixed;
+    bottom: 5%; 
+    right: 2%;
+    margin: auto;
+    z-index: 9999;
+}
+
+#ranking th, td{
+    text-align: center;
+}
+
+#ranking{
+    font-family: 'Nunito';
+}
+#ranking h5{
+    font-size: 30px;
+    font-weight: 900;
+}
+
+@media screen and (max-width: 600px){
+    
+    .btn-position-ranking {
+        bottom: 3%; 
+        right: 3%;
+    }  
+
+    .btn-ranking {
+        width: 60px; height: 60px;
+        color: #0c0c0c;
+        font: 25px Helvetica;
+        line-height: 30px;
+    }
+    
+}
