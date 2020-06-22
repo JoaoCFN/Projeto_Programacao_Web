@@ -63,6 +63,7 @@
             status.innerHTML = "Fim de jogo";
             switch(lastPlay){
                 case "Jogador":
+                    // ALERT DA BIBLIOTECA SWEET ALERT
                     Swal.fire({
                         icon: "success",
                         title: "Fim de jogo",
@@ -125,7 +126,7 @@
         }, 2000)
     }
 
-    // ATUALIZA OS VALORES DOS BOTÕES
+    // ATUALIZA OS VALORES DOS BOTÕES E DO RANKING
     function attOptions(){
         btn_soma_1.innerHTML = totalScore + 1;
         btn_soma_2.innerHTML = totalScore + 2;

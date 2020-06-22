@@ -17,6 +17,16 @@
     const status_player2 = document.querySelector(".status_player2");
     status_player2.innerHTML = player2.status;
 
+    // RANKING 
+    const labelVitoriasJogador1 = document.querySelector(".vitorias_jogador1");
+    const labelDerrotasJogador1 = document.querySelector(".derrotas_jogador1");
+    const labelVitoriasJogador2 = document.querySelector(".vitorias_jogador2");
+    const labelDerrotasJogador2 = document.querySelector(".derrotas_jogador2");
+    let vitoriasJogador1 = 0;
+    let derrotasJogador1 = 0;
+    let vitoriasJogador2 = 0;
+    let derrotasJogador2 = 0;
+
     // INFOS GERAIS
     const placar = document.querySelector(".placar");
     let lastPlay;
@@ -77,6 +87,12 @@
             btn_soma_2.setAttribute("disabled", true);
             btn_soma_3.setAttribute("disabled", true);
         }
+
+        // SETANDO VALORES INICIAIS DO RANKING
+        labelVitoriasJogador1.innerHTML = vitoriasJogador1;
+        labelDerrotasJogador1.innerHTML = derrotasJogador1;
+        labelVitoriasJogador2.innerHTML = vitoriasJogador2;
+        labelDerrotasJogador2.innerHTML = derrotasJogador2;
     }
 
     function updateStatus(){
@@ -100,18 +116,30 @@
         }
     }
 
+    // ATUALIZAR DADOS DO RANKING
+    function updateRankingData(winner){
+        if(winner == "Jogador 1"){
+            vitoriasJogador1 += 1;
+            derrotasJogador2 += 1;
+        }
+        else{
+            vitoriasJogador2 += 1;
+            derrotasJogador1 += 1;
+        }
+    }
+
     // VERIFICAÇÃO
     function verifyScore(score){
         console.log("Verificou");
         if(score == 21){
             status.innerHTML = "Fim de jogo";
-
+            // ALERT DA BIBLIOTECA SWEET ALERT
             Swal.fire({
                 icon: "success",
                 title: "Fim de jogo",
-                text: `${lastPlay} Voce venceu!`
+                text: `${lastPlay} você venceu!`
             })
-
+            updateRankingData(lastPlay);
             resetInfos();
             
         }
@@ -130,7 +158,7 @@
                     text: "Jogador 1, você venceu!"
                 })
             }
-
+            updateRankingData(lastPlay);
             resetInfos();
         }
     }
@@ -146,12 +174,14 @@
         }, 2000)
     }
 
+    
+
     // GERAR NÚMEROS INTEIROS ALTEATÓRIOS
-    function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
+    // function getRandomInt(min, max) {
+    //     min = Math.ceil(min);
+    //     max = Math.floor(max);
+    //     return Math.floor(Math.random() * (max - min)) + min;
+    // }
 
     // EVENT LISTENERS
     // PLAYER 1
