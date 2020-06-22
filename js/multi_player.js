@@ -36,7 +36,7 @@
     placar.innerHTML = totalScore;
     updateButtons();
 
-    // JOGADOR
+    // REALIZA A JOGADA DO JOGADOR 1
     function addScorePlayer1(button){
         if(totalScore < 21){
             totalScore = Number(button.innerHTML);
@@ -47,6 +47,7 @@
         }
     }
 
+    // REALIZA A JOGADA DO JOGADOR 2
     function addScorePlayer2(button){
         if(totalScore < 21){
             totalScore = Number(button.innerHTML);
@@ -95,6 +96,7 @@
         labelDerrotasJogador2.innerHTML = derrotasJogador2;
     }
 
+    // FAZ A MUDANÇA DE RODADA
     function updateStatus(){
         if(player1.status == "Sua vez"){
             // PLAYER 1
@@ -128,7 +130,7 @@
         }
     }
 
-    // VERIFICAÇÃO
+    // VERIFICAÇÃO DA PONTUAÇÃO ATUAL
     function verifyScore(score){
         console.log("Verificou");
         if(score == 21){
@@ -173,9 +175,7 @@
             updateButtons();
         }, 2000)
     }
-
     
-
     // GERAR NÚMEROS INTEIROS ALTEATÓRIOS
     // function getRandomInt(min, max) {
     //     min = Math.ceil(min);
