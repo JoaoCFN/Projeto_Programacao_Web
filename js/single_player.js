@@ -216,10 +216,7 @@
             const posicao_jogador = document.querySelector(".posicao_jogador");
             posicao_jogador.innerHTML = 2;
         }
-        
-        
     }
-
 
     // EVENT LISTENERS DOS BOTÕES
     btn_soma_1.addEventListener("click", () => {

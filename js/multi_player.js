@@ -17,16 +17,6 @@
     const status_player2 = document.querySelector(".status_player2");
     status_player2.innerHTML = player2.status;
 
-    // RANKING 
-    const labelVitoriasJogador1 = document.querySelector(".vitorias_jogador1");
-    const labelDerrotasJogador1 = document.querySelector(".derrotas_jogador1");
-    const labelVitoriasJogador2 = document.querySelector(".vitorias_jogador2");
-    const labelDerrotasJogador2 = document.querySelector(".derrotas_jogador2");
-    let vitoriasJogador1 = 0;
-    let derrotasJogador1 = 0;
-    let vitoriasJogador2 = 0;
-    let derrotasJogador2 = 0;
-
     // INFOS GERAIS
     const placar = document.querySelector(".placar");
     // ÚLTIMO A JOGAR
@@ -35,7 +25,31 @@
     // SETANDO VALORES INICIAIS
     totalScore = 0;
     placar.innerHTML = totalScore;
-    updateButtons();
+    const tabela_ranking = document.querySelector(".tabela_ranking");
+    const trJogador1 = document.createElement("tr");
+    const trJogador2 = document.createElement("tr");
+    // CRIANDO LINHAS DO RANKING
+    createRankingBody(
+        "Jogador 1", 
+        "posicao_jogador1",
+        "vitorias_jogador1", 
+        "derrotas_jogador1", 
+        trJogador1
+    );
+    createRankingBody(
+        "Jogador 2", 
+        "posicao_jogador2",
+        "vitorias_jogador2", 
+        "derrotas_jogador2", 
+        trJogador2
+    );
+    // DADOS DO RANKING
+    let vitoriasJogador1 = 0;
+    let derrotasJogador1 = 0;
+    let vitoriasJogador2 = 0;
+    let derrotasJogador2 = 0;
+
+    updateInfos();
 
     // REALIZA A JOGADA DO JOGADOR 1
     function addScorePlayer1(button){
@@ -44,7 +58,7 @@
             placar.innerHTML = totalScore;
             lastPlay = "Jogador 1";
             updateStatus();
-            updateButtons();
+            updateInfos();
         }
     }
 
@@ -55,12 +69,12 @@
             placar.innerHTML = totalScore;
             lastPlay = "Jogador 2";
             updateStatus();
-            updateButtons();
+            updateInfos();
         }
     }
 
-    // ATUALIZA OS VALORES DOS BOTÕES
-    function updateButtons(){
+    // ATUALIZA OS VALORES DOS BOTÕES E LABELS
+    function updateInfos(){
         // PLAYER 1
         btn_soma_1.innerHTML = totalScore + 1;
         btn_soma_2.innerHTML = totalScore + 2;
@@ -90,6 +104,13 @@
             btn_soma_3.setAttribute("disabled", true);
         }
 
+        reorderRanking();
+
+        // RANKING 
+        const labelVitoriasJogador1 = document.querySelector(".vitorias_jogador1");
+        const labelDerrotasJogador1 = document.querySelector(".derrotas_jogador1");
+        const labelVitoriasJogador2 = document.querySelector(".vitorias_jogador2");
+        const labelDerrotasJogador2 = document.querySelector(".derrotas_jogador2");
         // SETANDO VALORES INICIAIS DO RANKING
         labelVitoriasJogador1.innerHTML = vitoriasJogador1;
         labelDerrotasJogador1.innerHTML = derrotasJogador1;
@@ -119,7 +140,53 @@
         }
     }
 
-    // ATUALIZAR DADOS DO RANKING
+    // GERA O CORPO DO RANKING
+    function createRankingBody(name, position, nameClassWins, nameClassDefeats, trElement){
+        // POSIÇÃO DO JOGADOR 
+        const class_position = position;
+        position = document.createElement("th");
+        position.setAttribute("scope", "row");
+        position.setAttribute("class", class_position);
+
+        // NOME DO JOGADOR
+        const tdNome = document.createElement("td");
+        tdNome.innerHTML = name;
+
+        // NÚMERO DE VITÓRIAS
+        const tdVitorias = document.createElement("td");
+        tdVitorias.setAttribute("class", nameClassWins);
+
+        // NÚMERO DE DERROTAS
+        const tdDerrotas = document.createElement("td");
+        tdDerrotas.setAttribute("class", nameClassDefeats);
+
+        trElement.appendChild(position);
+        trElement.appendChild(tdNome);
+        trElement.appendChild(tdVitorias);
+        trElement.appendChild(tdDerrotas);
+    }
+
+    // SETA E ORGANIZA O RANKING DO JOGO
+    function reorderRanking(){
+        if(vitoriasJogador1 >= vitoriasJogador2){
+            tabela_ranking.appendChild(trJogador1);
+            tabela_ranking.appendChild(trJogador2);
+            const posicao_jogador1 = document.querySelector(".posicao_jogador1");
+            posicao_jogador1.innerHTML = 1;
+            const posicao_jogador2 = document.querySelector(".posicao_jogador2");
+            posicao_jogador2.innerHTML = 2;
+        }
+        else{
+            tabela_ranking.appendChild(trJogador2);
+            tabela_ranking.appendChild(trJogador1);
+            const posicao_jogador2 = document.querySelector(".posicao_jogador2");
+            posicao_jogador2.innerHTML = 1;
+            const posicao_jogador1 = document.querySelector(".posicao_jogador1");
+            posicao_jogador1.innerHTML = 2;
+        }
+    }
+
+    // ATUALIZAR DADOS DO RANKING DE ACORDO COM O VENCEDOR DA PARTIDA
     function updateRankingData(winner){
         if(winner == "Jogador 1"){
             vitoriasJogador1 += 1;
@@ -133,7 +200,6 @@
 
     // VERIFICAÇÃO DA PONTUAÇÃO ATUAL
     function verifyScore(score){
-        console.log("Verificou");
         if(score == 21){
             status.innerHTML = "Fim de jogo";
             // ALERT DA BIBLIOTECA SWEET ALERT
@@ -173,7 +239,7 @@
             totalScore = 0;
             placar.innerHTML = totalScore;
             // updateStatus();
-            updateButtons();
+            updateInfos();
         }, 2000)
     }
     
