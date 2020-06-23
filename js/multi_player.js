@@ -29,6 +29,7 @@
 
     // INFOS GERAIS
     const placar = document.querySelector(".placar");
+    // ÚLTIMO A JOGAR
     let lastPlay;
 
     // SETANDO VALORES INICIAIS
@@ -176,13 +177,6 @@
         }, 2000)
     }
     
-    // GERAR NÚMEROS INTEIROS ALTEATÓRIOS
-    // function getRandomInt(min, max) {
-    //     min = Math.ceil(min);
-    //     max = Math.floor(max);
-    //     return Math.floor(Math.random() * (max - min)) + min;
-    // }
-
     // EVENT LISTENERS
     // PLAYER 1
     btn_soma_1.addEventListener("click", () => {

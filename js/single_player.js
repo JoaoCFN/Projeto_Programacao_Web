@@ -4,21 +4,37 @@
     const btn_soma_3 = document.querySelector("#soma_3");
     const placar = document.querySelector(".placar");
     const status = document.querySelector(".status");
+    // ÚLTIMO A JOGAR
     let lastPlay;
+    // SETANDO VALORES INICIAIS
+    totalScore = 0;
+    placar.innerHTML = totalScore;
+    status.innerHTML = "Sua vez";
     // RANKING 
-    const labelVitoriasJogador = document.querySelector(".vitorias_jogador");
-    const labelDerrotasJogador = document.querySelector(".derrotas_jogador");
-    const labelVitoriasComputador = document.querySelector(".vitorias_computador");
-    const labelDerrotasComputador = document.querySelector(".derrotas_computador");
+    const tabela_ranking = document.querySelector(".tabela_ranking");
+    const trJogador = document.createElement("tr");
+    const trComputador = document.createElement("tr");
+    // CRIANDO LINHAS DO RANKING
+    createRankingBody(
+        "Jogador", 
+        "posicao_jogador",
+        "vitorias_jogador", 
+        "derrotas_jogador", 
+        trJogador
+    );
+    createRankingBody(
+        "Computador", 
+        "posicao_computador",
+        "vitorias_computador", 
+        "derrotas_computador", 
+        trComputador
+    );
+    // DADOS DO RANKING
     let vitoriasJogador = 0;
     let derrotasJogador = 0;
     let vitoriasComputador = 0;
     let derrotasComputador = 0;
 
-    // SETANDO VALORES INICIAIS
-    totalScore = 0;
-    placar.innerHTML = totalScore;
-    status.innerHTML = "Sua vez";
     attOptions();
 
     // ADICIONA PONTUAÇÃO AO JOGADOR
@@ -135,6 +151,14 @@
         btn_soma_1.removeAttribute("disabled");
         btn_soma_2.removeAttribute("disabled");
         btn_soma_3.removeAttribute("disabled");
+
+        updateRanking();
+
+        // PEGANDO VALORES DO RANKING
+        const labelVitoriasJogador = document.querySelector(".vitorias_jogador");
+        const labelDerrotasJogador = document.querySelector(".derrotas_jogador");
+        const labelVitoriasComputador = document.querySelector(".vitorias_computador");
+        const labelDerrotasComputador = document.querySelector(".derrotas_computador");
         // SETANDO VALORES INICIAIS DO RANKING
         labelVitoriasJogador.innerHTML = vitoriasJogador;
         labelDerrotasJogador.innerHTML = derrotasJogador;
@@ -148,6 +172,54 @@
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min;
     }
+
+    // GERA O CORPO DO RANKING
+    function createRankingBody(name, position, nameClassWins, nameClassDefeats, trElement){
+        // POSIÇÃO DO JOGADOR 
+        const class_position = position;
+        position = document.createElement("th");
+        position.setAttribute("scope", "row");
+        position.setAttribute("class", class_position);
+
+        // NOME DO JOGADOR
+        const tdNome = document.createElement("td");
+        tdNome.innerHTML = name;
+
+        // NÚMERO DE VITÓRIAS
+        const tdVitorias = document.createElement("td");
+        tdVitorias.setAttribute("class", nameClassWins);
+
+        // NÚMERO DE DERROTAS
+        const tdDerrotas = document.createElement("td");
+        tdDerrotas.setAttribute("class", nameClassDefeats);
+
+        trElement.appendChild(position);
+        trElement.appendChild(tdNome);
+        trElement.appendChild(tdVitorias);
+        trElement.appendChild(tdDerrotas);
+    }
+
+    function updateRanking(){
+        if(vitoriasJogador >= vitoriasComputador){
+            tabela_ranking.appendChild(trJogador);
+            tabela_ranking.appendChild(trComputador);
+            const posicao_jogador = document.querySelector(".posicao_jogador");
+            posicao_jogador.innerHTML = 1;
+            const posicao_computador = document.querySelector(".posicao_computador");
+            posicao_computador.innerHTML = 2;
+        }
+        else{
+            tabela_ranking.appendChild(trComputador);
+            tabela_ranking.appendChild(trJogador);
+            const posicao_computador = document.querySelector(".posicao_computador");
+            posicao_computador.innerHTML = 1;
+            const posicao_jogador = document.querySelector(".posicao_jogador");
+            posicao_jogador.innerHTML = 2;
+        }
+        
+        
+    }
+
 
     // EVENT LISTENERS DOS BOTÕES
     btn_soma_1.addEventListener("click", () => {
