@@ -70,7 +70,7 @@
                 lastPlay = "Computador";
                 attOptions();
             }
-        }, 2000)
+        }, 1500)
     }
 
     // VERIFICA A PONTUAÇÃO ATUAL
@@ -224,7 +224,7 @@
         addScoreComputer();
         setTimeout(() => {
             verifyScore(totalScore);
-        }, 2500)
+        }, 2000)
     })
 
     btn_soma_2.addEventListener("click", () => {
@@ -232,7 +232,7 @@
         addScoreComputer();
         setTimeout(() => {
             verifyScore(totalScore);
-        }, 2500)
+        }, 2000)
     })
 
     btn_soma_3.addEventListener("click", () => {
@@ -240,7 +240,7 @@
         addScoreComputer();
         setTimeout(() => {
             verifyScore(totalScore);
-        }, 2500)
+        }, 2000)
     })
 
 })();
