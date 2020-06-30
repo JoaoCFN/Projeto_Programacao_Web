@@ -1,5 +1,7 @@
 # :video_game: 21 de Boca
 
+ ![projeto](midia/game.gif)
+
  ## :pencil: Projeto
   Projeto final da disciplina de programação web - SENAI. Nele foi desenvolvido um mini game para treinar as habilidades no desenvolvimento Web.
  
